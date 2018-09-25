@@ -99,7 +99,7 @@ int main(int argc, char **argv)
     rtlsdr_set_i2c_repeater(dev, 0);
 
 exit:
-	rtlsdr_close_bt(dev);
+	rtlsdr_close (dev);
 
 	return r >= 0 ? r : -r;
 }
