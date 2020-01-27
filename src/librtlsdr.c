@@ -1164,6 +1164,19 @@ int rtlsdr_set_agc_mode(rtlsdr_dev_t *dev, int on)
 	return rtlsdr_demod_write_reg(dev, 0, 0x19, on ? 0x25 : 0x05, 1);
 }
 
+int rtlsdr_set_bias_tee(rtlsdr_dev_t *dev, int on)
+{
+	if (!dev)
+		return -1;
+
+	rtlsdr_set_gpio_output(dev, 0);
+	rtlsdr_set_gpio_bit(dev, 0, on);
+
+	return 1;
+}
+
+
+
 int rtlsdr_set_direct_sampling(rtlsdr_dev_t *dev, int on)
 {
 	int r = 0;
@@ -1780,7 +1793,6 @@ static int _rtlsdr_alloc_async_buffers(rtlsdr_dev_t *dev)
 static int _rtlsdr_free_async_buffers(rtlsdr_dev_t *dev)
 {
 	unsigned int i;
-
 	if (!dev)
 		return -1;
 

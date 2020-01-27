@@ -288,6 +288,13 @@ RTLSDR_API int rtlsdr_set_testmode(rtlsdr_dev_t *dev, int on);
 RTLSDR_API int rtlsdr_set_agc_mode(rtlsdr_dev_t *dev, int on);
 
 /*!
+* Enable or disable bias_tee for the rtl-sdr dongle v.3
+*/
+RTLSDR_API int rtlsdr_set_bias_tee(rtlsdr_dev_t *dev, int on);
+
+
+
+/*!
  * Enable or disable the direct sampling mode. When enabled, the IF mode
  * of the RTL2832 is activated, and rtlsdr_set_center_freq() will control
  * the IF-frequency of the DDC, which can be used to tune from 0 to 28.8 MHz
@@ -336,6 +343,14 @@ RTLSDR_API int rtlsdr_get_offset_tuning(rtlsdr_dev_t *dev);
  * \return 0 on success
  */
 RTLSDR_API int rtlsdr_set_dithering(rtlsdr_dev_t *dev, int dither);
+
+
+/*
+*/
+RTLSDR_API void rtlsdr_set_i2c_repeater(rtlsdr_dev_t *dev, int on);
+RTLSDR_API int rtlsdr_i2c_write_reg(rtlsdr_dev_t *dev, uint8_t i2c_addr, uint8_t reg, uint8_t val);
+
+
 
 /* streaming functions */
 
